@@ -1,13 +1,17 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: 'X'
+description: 'X'
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  token:
+    description: "Github token"
     required: true
-    default: '1000'
-outputs:
-  time: # output will be available to future steps
-    description: 'The message to output'
+  title:
+    description: "Title"
+    default: "# :cold_sweat: Cypress failure"
+    required: false
+  pathname:
+    description: 'JSON pathname'
+    required: true
+    default: 'test/'
 runs:
   using: 'node12'
   main: 'dist/index.js'

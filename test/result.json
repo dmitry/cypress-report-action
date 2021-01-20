@@ -1,0 +1,133 @@
+{
+  "stats": {
+    "suites": 19,
+    "tests": 58,
+    "passes": 41,
+    "pending": 1,
+    "failures": 16,
+    "start": "2021-01-15T10:11:06.965Z",
+    "end": "2021-01-15T10:17:03.876Z",
+    "duration": 297929,
+    "testsRegistered": 58,
+    "passPercent": 70.6896551724138,
+    "pendingPercent": 1.7241379310344827,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "61bd5982-b0d3-4f5f-a5c4-788ac037f126",
+      "title": "",
+      "fullFile": "test/cypress/integration/pages/Profile/Component.spec.js",
+      "file": "test/cypress/integration/pages/Profile/Component.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "cf032556-e99f-4894-8399-8ba40b09ca59",
+          "title": "X",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "763c03f7-8685-4a7f-bed2-7819db62eb8d",
+              "title": "A",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "Z",
+                  "fullTitle": "F",
+                  "timedOut": null,
+                  "duration": 6665,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "test",
+                  "err": {
+                    "message": "AssertionError: Timed out retrying: Expected to find content: '12' within the selector: 'h1' but never did.",
+                    "estack": "AssertionError: Timed out retrying: Expected to find content: '12' within the selector: 'h1' but never did.\n    at Context.eval (https://localhost:14002/__cypress/tests?p=test/cypress/integration/pages/Profile/Component.spec.js:750:12)",
+                    "diff": null
+                  },
+                  "uuid": "653127d7-9760-4ab5-b0ef-8a849218e947",
+                  "parentUUID": "763c03f7-8685-4a7f-bed2-7819db62eb8d",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "97009c63-88e3-4163-a4af-3109a694b5e4",
+                "b3740642-b694-4d69-9028-77797eafa5e8"
+              ],
+              "failures": [
+                "653127d7-9760-4ab5-b0ef-8a849218e947"
+              ],
+              "pending": [],
+              "skipped": [],
+              "duration": 15053,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": true,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.1"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quiet": true,
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "5.1.0"
+    }
+  }
+}

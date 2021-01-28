@@ -1,5 +1,9 @@
 # Features
 
+On each pull request commit push you will get the following comment with a report:
+
+![Report](docs/report.png)
+
 - Creates comment with short report on cypress gets failures.
 - Removes comment when no failures reported.
 - Replaces comment everytime build is completed.
@@ -40,3 +44,4 @@ You can now consume the action by referencing the v1 branch:
     pathname: frontend/test/cypress/reports/mocha/index.json
   if: always()
 ```
+

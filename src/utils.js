@@ -37,12 +37,10 @@ function getChildren(input, output, filepath) {
 
 function getTable(examples) {
   return markdownTable([
-    ['State', 'Filepath', 'Title', 'Description'],
+    ['State', 'Description'],
     ...examples.map(({state, filepath, title, message}) => [
       state,
-      filepath,
-      title,
-      message
+      `**Filepath**: ${filepath}<br>**Title**: ${title}<br>**Error**: ${message}`
     ])
   ])
 }
@@ -74,8 +72,9 @@ const commentGeneralOptions = () => {
 
 async function report(result) {
   const title = core.getInput('title', {required: true})
+  const always = core.getInput('always', {required: true})
 
-  if (result.success) {
+  if (!result.stats.failures && !always) {
     await deleteComment({
       ...commentGeneralOptions(),
       body: title,

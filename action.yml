@@ -1,17 +1,21 @@
-name: 'X'
-description: 'X'
+name: 'Cypress report action'
+description: 'Basic report added to the pull request as a comment with summary and detailed failures table using github actions.'
 inputs:
   token:
     description: "Github token"
     required: true
-  title:
-    description: "Title"
-    default: "# :cold_sweat: Cypress failure"
-    required: false
   pathname:
-    description: 'JSON pathname'
+    description: 'Full pathname to the mochawesome report JSON file'
     required: true
     default: 'test/'
+  title:
+    description: "Title in the comment"
+    default: "## :evergreen_tree: Cypress report"
+    required: false
+  always:
+    description: 'Should it be shown always or it should be deleted when there are no failures'
+    required: false
+    default: true
 runs:
   using: 'node12'
   main: 'dist/index.js'

@@ -1,7 +1,7 @@
 {
   "name": "cypress-report-action",
   "version": "1.0.0",
-  "description": "Basic report to the pull request comment with summary and detailed failures table using github actions.",
+  "description": "Basic report added to the pull request as a comment with summary and detailed failures table using github actions.",
   "main": "src/index.js",
   "scripts": {
     "lint": "eslint .",

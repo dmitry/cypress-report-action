@@ -1,5 +1,7 @@
 name: 'Cypress report action'
 description: 'Basic report added to the pull request as a comment with summary and detailed failures table using github actions.'
+icon: alert-triangle
+color: green
 inputs:
   token:
     description: "Github token"

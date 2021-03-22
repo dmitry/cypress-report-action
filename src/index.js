@@ -10,7 +10,9 @@ async function run() {
     const fullPathname = path.resolve(
       process.env.GITHUB_WORKSPACE,
       pathname
-    )
+    );
+
+    console.log(fullPathname);
 
     try {
       fs.accessSync(fullPathname, fs.constants.R_OK)

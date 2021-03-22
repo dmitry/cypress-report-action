@@ -1,4 +1,4 @@
-name: 'Cypress report action'
+name: 'Cypress report action duynhanf'
 description: 'Basic report added to the pull request as a comment with summary and detailed failures table using github actions.'
 icon: alert-triangle
 color: green

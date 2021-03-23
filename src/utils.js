@@ -55,7 +55,7 @@ function getSummary(stats) {
 
 function pullRequestId() {
   const pullRequestId = github.context.issue.number
-  console.log('pullRequestId : ', pullRequestId);
+  core.info('pullRequestId : ', pullRequestId);
   if (!pullRequestId) {
     throw new Error('Cannot find the pull request ID.')
   }
@@ -64,7 +64,7 @@ function pullRequestId() {
 
 const commentGeneralOptions = () => {
   const token = core.getInput('token', { required: true });
-  console.log('token : ', token)
+  core.info('token : ', token);
   return {
     token: token,
     owner: github.context.repo.owner,

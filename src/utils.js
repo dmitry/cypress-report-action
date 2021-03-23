@@ -1,21 +1,21 @@
 const core = require('@actions/core')
 const github = require('@actions/github')
 const markdownTable = require('markdown-table')
-const {deleteComment} = require('@aki77/actions-replace-comment')
-const replaceComment = require('@aki77/actions-replace-comment').default
+// const { deleteComment } = require('@aki77/actions-replace-comment')
+// const replaceComment = require('@aki77/actions-replace-comment').default
 
 function getExamples(results) {
   return getChildren(results, [])
 }
 
 function getChildren(input, output, filepath) {
-  Object.values(input).forEach(({tests, suites, file}) => {
+  Object.values(input).forEach(({ tests, suites, file }) => {
     if (file) {
       filepath = file
     }
 
     if (tests) {
-      tests.forEach(({fail, pending, skipped, fullTitle, err: {message}}) => {
+      tests.forEach(({ fail, pending, skipped, fullTitle, err: { message } }) => {
         if (fail || pending || skipped) {
           output.push({
             title: fullTitle,
@@ -38,7 +38,7 @@ function getChildren(input, output, filepath) {
 function getTable(examples) {
   return markdownTable([
     ['State', 'Description'],
-    ...examples.map(({state, filepath, title, message}) => [
+    ...examples.map(({ state, filepath, title, message }) => [
       state,
       `**Filepath**: ${filepath}<br>**Title**: ${title}<br>**Error**: ${message}`
     ])
@@ -62,43 +62,32 @@ function pullRequestId() {
   return pullRequestId
 }
 
-const commentGeneralOptions = () => {
-  const token = core.getInput('token', { required: true });
-  core.debug('token');
-  return {
-    token: token,
-    owner: github.context.repo.owner,
-    repo: github.context.repo.repo,
-    issue_number: pullRequestId()
-  }
-}
+// const commentGeneralOptions = () => {
+//   const token = core.getInput('token', { required: true });
+//   core.debug('token');
+//   return {
+//     token: token,
+//     owner: github.context.repo.owner,
+//     repo: github.context.repo.repo,
+//     issue_number: pullRequestId()
+//   }
+// }
 
 async function report(result) {
-  const title = core.getInput('title', {required: true})
-  const always = core.getInput('always', {required: true})
-  core.debug(title);
-  core.debug(always);
+  const title = core.getInput('title', { required: true })
+  // const always = core.getInput('always', { required: true })
 
-  if (!result.stats.failures && !always) {
-    await deleteComment({
-      ...commentGeneralOptions(),
-      body: title,
-      startsWith: true
-    })
-    return
-  }
-
-  await replaceComment({
-    ...commentGeneralOptions(),
+  await github.getOctokit().issues.createComment({
+    owner: github.context.repo.owner,
+    repo: github.context.repo.repo,
+    issue_number: pullRequestId(),
     body: `${title}
-<details>
-<summary>${getSummary(result.stats)}</summary>
-
-${getTable(getExamples(result.results))}
-
-</details>
-`
-  })
+        <details>
+        <summary>${getSummary(result.stats)}</summary>
+        ${getTable(getExamples(result.results))}
+        </details>
+        `,
+  });
 }
 
 exports.getTable = getTable

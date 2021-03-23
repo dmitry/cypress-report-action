@@ -77,7 +77,7 @@ async function report(result) {
   const title = core.getInput('title', { required: true })
 
   try {
-    await github.getOctokit().issues.createComment({
+    const res = await github.getOctokit().issues.createComment({
       ...commentGeneralOptions(),
       body: `${title}
         <details>
@@ -86,6 +86,8 @@ async function report(result) {
         </details>
         `,
     });
+    core.info(res.status);
+    core.info(res.data);
   } catch (err) {
     core.error(err)
   }

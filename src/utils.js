@@ -62,25 +62,22 @@ function pullRequestId() {
   return pullRequestId
 }
 
-// const commentGeneralOptions = () => {
-//   const token = core.getInput('token', { required: true });
-//   core.debug('token');
-//   return {
-//     token: token,
-//     owner: github.context.repo.owner,
-//     repo: github.context.repo.repo,
-//     issue_number: pullRequestId()
-//   }
-// }
+const commentGeneralOptions = () => {
+  const token = core.getInput('token', { required: true });
+  core.debug('token');
+  return {
+    token: token,
+    owner: github.context.repo.owner,
+    repo: github.context.repo.repo,
+    issue_number: pullRequestId()
+  }
+}
 
 async function report(result) {
   const title = core.getInput('title', { required: true })
-  // const always = core.getInput('always', { required: true })
 
   await github.getOctokit().issues.createComment({
-    owner: github.context.repo.owner,
-    repo: github.context.repo.repo,
-    issue_number: pullRequestId(),
+    ...commentGeneralOptions(),
     body: `${title}
         <details>
         <summary>${getSummary(result.stats)}</summary>

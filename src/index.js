@@ -12,7 +12,7 @@ async function run() {
       pathname
     );
 
-    console.log(fullPathname);
+    core.info(fullPathname);
 
     try {
       fs.accessSync(fullPathname, fs.constants.R_OK)

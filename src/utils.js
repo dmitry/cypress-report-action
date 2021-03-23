@@ -76,15 +76,19 @@ const commentGeneralOptions = () => {
 async function report(result) {
   const title = core.getInput('title', { required: true })
 
-  await github.getOctokit().issues.createComment({
-    ...commentGeneralOptions(),
-    body: `${title}
+  try {
+    await github.getOctokit().issues.createComment({
+      ...commentGeneralOptions(),
+      body: `${title}
         <details>
         <summary>${getSummary(result.stats)}</summary>
         ${getTable(getExamples(result.results))}
         </details>
         `,
-  });
+    });
+  } catch (err) {
+    core.error(err)
+  }
 }
 
 exports.getTable = getTable

@@ -64,7 +64,7 @@ function pullRequestId() {
 
 const commentGeneralOptions = () => {
   const token = core.getInput('token', { required: true });
-  core.info('token : ', token);
+  core.debug('token');
   return {
     token: token,
     owner: github.context.repo.owner,
@@ -76,6 +76,8 @@ const commentGeneralOptions = () => {
 async function report(result) {
   const title = core.getInput('title', {required: true})
   const always = core.getInput('always', {required: true})
+  core.debug(title);
+  core.debug(always);
 
   if (!result.stats.failures && !always) {
     await deleteComment({
